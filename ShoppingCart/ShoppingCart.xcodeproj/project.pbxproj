@@ -8,24 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		AC2D9DB8227B368C005F1E68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2D9DB7227B368C005F1E68 /* AppDelegate.m */; };
-		AC2D9DBB227B368C005F1E68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2D9DBA227B368C005F1E68 /* ViewController.m */; };
 		AC2D9DBE227B368C005F1E68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC2D9DBC227B368C005F1E68 /* Main.storyboard */; };
-		AC2D9DC0227B3690005F1E68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC2D9DBF227B3690005F1E68 /* Assets.xcassets */; };
 		AC2D9DC3227B3690005F1E68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC2D9DC1227B3690005F1E68 /* LaunchScreen.storyboard */; };
 		AC2D9DC6227B3690005F1E68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2D9DC5227B3690005F1E68 /* main.m */; };
+		AC2D9DCD227B416C005F1E68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC2D9DCC227B416C005F1E68 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AC2D9DB3227B368C005F1E68 /* ShoppingCart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingCart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC2D9DB6227B368C005F1E68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AC2D9DB7227B368C005F1E68 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AC2D9DB9227B368C005F1E68 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AC2D9DBA227B368C005F1E68 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AC2D9DBD227B368C005F1E68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AC2D9DBF227B3690005F1E68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC2D9DC2227B3690005F1E68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC2D9DC4227B3690005F1E68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC2D9DC5227B3690005F1E68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AC2D9DCC227B416C005F1E68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,12 +55,10 @@
 		AC2D9DB5227B368C005F1E68 /* ShoppingCart */ = {
 			isa = PBXGroup;
 			children = (
+				AC2D9DCC227B416C005F1E68 /* Assets.xcassets */,
 				AC2D9DB6227B368C005F1E68 /* AppDelegate.h */,
 				AC2D9DB7227B368C005F1E68 /* AppDelegate.m */,
-				AC2D9DB9227B368C005F1E68 /* ViewController.h */,
-				AC2D9DBA227B368C005F1E68 /* ViewController.m */,
 				AC2D9DBC227B368C005F1E68 /* Main.storyboard */,
-				AC2D9DBF227B3690005F1E68 /* Assets.xcassets */,
 				AC2D9DC1227B3690005F1E68 /* LaunchScreen.storyboard */,
 				AC2D9DC4227B3690005F1E68 /* Info.plist */,
 				AC2D9DC5227B3690005F1E68 /* main.m */,
@@ -129,7 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC2D9DC3227B3690005F1E68 /* LaunchScreen.storyboard in Resources */,
-				AC2D9DC0227B3690005F1E68 /* Assets.xcassets in Resources */,
+				AC2D9DCD227B416C005F1E68 /* Assets.xcassets in Resources */,
 				AC2D9DBE227B368C005F1E68 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,7 +136,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC2D9DBB227B368C005F1E68 /* ViewController.m in Sources */,
 				AC2D9DC6227B3690005F1E68 /* main.m in Sources */,
 				AC2D9DB8227B368C005F1E68 /* AppDelegate.m in Sources */,
 			);
