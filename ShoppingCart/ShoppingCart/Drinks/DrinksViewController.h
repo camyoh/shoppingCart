@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DrinksViewController.h
 //  ShoppingCart
 //
 //  Created by Carlos Mendieta on 5/2/19.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface DrinksViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END
