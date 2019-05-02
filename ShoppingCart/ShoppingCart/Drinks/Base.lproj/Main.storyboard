@@ -10,37 +10,33 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Shopping Cart-->
         <scene sceneID="Z4C-hJ-iu5">
             <objects>
-                <viewController id="JNQ-VL-5Zv" sceneMemberID="viewController">
+                <viewController id="JNQ-VL-5Zv" customClass="ShoppingCartViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t2P-9r-BTG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.1019607843" green="0.73725490199999999" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="QtW-Zk-MPH"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="cart" id="tl3-Hz-HDG">
-                        <inset key="imageInsets" minX="0.0" minY="12" maxX="0.0" maxY="0.0"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Shopping Cart" image="cart2" id="tl3-Hz-HDG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JN3-u5-fen" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-837" y="139"/>
         </scene>
-        <!--View Controller-->
+        <!--Drinks-->
         <scene sceneID="Vuf-Wf-Tgw">
             <objects>
-                <viewController id="F8o-nr-IKb" sceneMemberID="viewController">
+                <viewController id="F8o-nr-IKb" customClass="DrinksViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="njP-JX-1S7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="C2O-ds-gZM"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="beer" id="hDV-Kg-bXT">
-                        <inset key="imageInsets" minX="0.0" minY="12" maxX="0.0" maxY="0.0"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Drinks" image="beer2" id="hDV-Kg-bXT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E2z-MR-fu1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -66,7 +62,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="beer" width="64" height="64"/>
-        <image name="cart" width="64" height="64"/>
+        <image name="beer2" width="32" height="32"/>
+        <image name="cart2" width="32" height="32"/>
     </resources>
 </document>
