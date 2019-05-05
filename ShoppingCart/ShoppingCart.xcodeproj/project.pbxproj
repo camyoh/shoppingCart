@@ -14,6 +14,7 @@
 		AC2D9DCD227B416C005F1E68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC2D9DCC227B416C005F1E68 /* Assets.xcassets */; };
 		AC2D9DD2227B4906005F1E68 /* DrinksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2D9DD1227B4906005F1E68 /* DrinksViewController.m */; };
 		AC2D9DD5227B4919005F1E68 /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2D9DD4227B4919005F1E68 /* ShoppingCartViewController.m */; };
+		AC2D9DDA227B9146005F1E68 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2D9DD9227B9146005F1E68 /* Drink.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		AC2D9DD1227B4906005F1E68 /* DrinksViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrinksViewController.m; sourceTree = "<group>"; };
 		AC2D9DD3227B4919005F1E68 /* ShoppingCartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoppingCartViewController.h; sourceTree = "<group>"; };
 		AC2D9DD4227B4919005F1E68 /* ShoppingCartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartViewController.m; sourceTree = "<group>"; };
+		AC2D9DD8227B9146005F1E68 /* Drink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Drink.h; sourceTree = "<group>"; };
+		AC2D9DD9227B9146005F1E68 /* Drink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Drink.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,8 @@
 				AC2D9DBC227B368C005F1E68 /* Main.storyboard */,
 				AC2D9DD0227B4906005F1E68 /* DrinksViewController.h */,
 				AC2D9DD1227B4906005F1E68 /* DrinksViewController.m */,
+				AC2D9DD8227B9146005F1E68 /* Drink.h */,
+				AC2D9DD9227B9146005F1E68 /* Drink.m */,
 			);
 			path = Drinks;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC2D9DD5227B4919005F1E68 /* ShoppingCartViewController.m in Sources */,
+				AC2D9DDA227B9146005F1E68 /* Drink.m in Sources */,
 				AC2D9DC6227B3690005F1E68 /* main.m in Sources */,
 				AC2D9DB8227B368C005F1E68 /* AppDelegate.m in Sources */,
 				AC2D9DD2227B4906005F1E68 /* DrinksViewController.m in Sources */,
