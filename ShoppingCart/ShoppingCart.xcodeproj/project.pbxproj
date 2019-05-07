@@ -14,7 +14,9 @@
 		AC2D9DCD227B416C005F1E68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC2D9DCC227B416C005F1E68 /* Assets.xcassets */; };
 		AC2D9DD2227B4906005F1E68 /* DrinksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2D9DD1227B4906005F1E68 /* DrinksViewController.m */; };
 		AC2D9DD5227B4919005F1E68 /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2D9DD4227B4919005F1E68 /* ShoppingCartViewController.m */; };
-		AC2D9DDA227B9146005F1E68 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2D9DD9227B9146005F1E68 /* Drink.m */; };
+		AC5991C4228096E300976962 /* RequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5991C3228096E300976962 /* RequestModel.m */; };
+		AC5991C72280C5ED00976962 /* DrinksViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5991C62280C5ED00976962 /* DrinksViewModel.m */; };
+		AC92D5FA2280E53D00C5D368 /* DrinkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC92D5F92280E53D00C5D368 /* DrinkModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +32,12 @@
 		AC2D9DD1227B4906005F1E68 /* DrinksViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrinksViewController.m; sourceTree = "<group>"; };
 		AC2D9DD3227B4919005F1E68 /* ShoppingCartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoppingCartViewController.h; sourceTree = "<group>"; };
 		AC2D9DD4227B4919005F1E68 /* ShoppingCartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartViewController.m; sourceTree = "<group>"; };
-		AC2D9DD8227B9146005F1E68 /* Drink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Drink.h; sourceTree = "<group>"; };
-		AC2D9DD9227B9146005F1E68 /* Drink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Drink.m; sourceTree = "<group>"; };
+		AC5991C2228096E300976962 /* RequestModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestModel.h; sourceTree = "<group>"; };
+		AC5991C3228096E300976962 /* RequestModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestModel.m; sourceTree = "<group>"; };
+		AC5991C52280C5ED00976962 /* DrinksViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrinksViewModel.h; sourceTree = "<group>"; };
+		AC5991C62280C5ED00976962 /* DrinksViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrinksViewModel.m; sourceTree = "<group>"; };
+		AC92D5F82280E53D00C5D368 /* DrinkModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrinkModel.h; sourceTree = "<group>"; };
+		AC92D5F92280E53D00C5D368 /* DrinkModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrinkModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +89,12 @@
 				AC2D9DBC227B368C005F1E68 /* Main.storyboard */,
 				AC2D9DD0227B4906005F1E68 /* DrinksViewController.h */,
 				AC2D9DD1227B4906005F1E68 /* DrinksViewController.m */,
-				AC2D9DD8227B9146005F1E68 /* Drink.h */,
-				AC2D9DD9227B9146005F1E68 /* Drink.m */,
+				AC5991C2228096E300976962 /* RequestModel.h */,
+				AC5991C3228096E300976962 /* RequestModel.m */,
+				AC5991C52280C5ED00976962 /* DrinksViewModel.h */,
+				AC5991C62280C5ED00976962 /* DrinksViewModel.m */,
+				AC92D5F82280E53D00C5D368 /* DrinkModel.h */,
+				AC92D5F92280E53D00C5D368 /* DrinkModel.m */,
 			);
 			path = Drinks;
 			sourceTree = "<group>";
@@ -175,11 +185,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC92D5FA2280E53D00C5D368 /* DrinkModel.m in Sources */,
 				AC2D9DD5227B4919005F1E68 /* ShoppingCartViewController.m in Sources */,
-				AC2D9DDA227B9146005F1E68 /* Drink.m in Sources */,
 				AC2D9DC6227B3690005F1E68 /* main.m in Sources */,
 				AC2D9DB8227B368C005F1E68 /* AppDelegate.m in Sources */,
+				AC5991C4228096E300976962 /* RequestModel.m in Sources */,
 				AC2D9DD2227B4906005F1E68 /* DrinksViewController.m in Sources */,
+				AC5991C72280C5ED00976962 /* DrinksViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
