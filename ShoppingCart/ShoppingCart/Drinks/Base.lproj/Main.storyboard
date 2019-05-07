@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P65-WH-ra3">
-    <device id="retina6_5" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -33,14 +33,33 @@
                     <view key="view" contentMode="scaleToFill" id="njP-JX-1S7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4TA-bp-Rfl">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="F8o-nr-IKb" id="NIg-wp-Ydc"/>
+                                    <outlet property="delegate" destination="F8o-nr-IKb" id="cfj-R6-zU9"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4TA-bp-Rfl" firstAttribute="leading" secondItem="C2O-ds-gZM" secondAttribute="leading" id="ORe-Tj-VlT"/>
+                            <constraint firstItem="4TA-bp-Rfl" firstAttribute="top" secondItem="C2O-ds-gZM" secondAttribute="top" id="WT5-8p-j96"/>
+                            <constraint firstItem="4TA-bp-Rfl" firstAttribute="trailing" secondItem="C2O-ds-gZM" secondAttribute="trailing" id="azf-Nc-2qW"/>
+                            <constraint firstItem="4TA-bp-Rfl" firstAttribute="bottom" secondItem="C2O-ds-gZM" secondAttribute="bottom" id="gVO-Tl-Z4F"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="C2O-ds-gZM"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Drinks" image="beer2" id="hDV-Kg-bXT"/>
+                    <connections>
+                        <outlet property="drinksTableView" destination="4TA-bp-Rfl" id="Y72-iX-dQy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E2z-MR-fu1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-837" y="-510"/>
+            <point key="canvasLocation" x="-837.68115942028987" y="-510.26785714285711"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jmu-Qa-jGg">

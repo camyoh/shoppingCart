@@ -25,7 +25,7 @@
         drink.price = drinksData[@"data"][i][@"store"][@"price"];
         [self.drinks addObject:drink];
     }
-    NSLog(@"total bebidas: %lu",(unsigned long)totalDrinks);
+//    NSLog(@"total bebidas: %lu",(unsigned long)totalDrinks);
 }
 
 @end

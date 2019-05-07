@@ -17,6 +17,8 @@
 		AC5991C4228096E300976962 /* RequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5991C3228096E300976962 /* RequestModel.m */; };
 		AC5991C72280C5ED00976962 /* DrinksViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5991C62280C5ED00976962 /* DrinksViewModel.m */; };
 		AC92D5FA2280E53D00C5D368 /* DrinkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC92D5F92280E53D00C5D368 /* DrinkModel.m */; };
+		AC92D5FE2281D9C400C5D368 /* DrinkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC92D5FC2281D9C400C5D368 /* DrinkCell.m */; };
+		AC92D5FF2281D9C400C5D368 /* DrinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC92D5FD2281D9C400C5D368 /* DrinkCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,9 @@
 		AC5991C62280C5ED00976962 /* DrinksViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrinksViewModel.m; sourceTree = "<group>"; };
 		AC92D5F82280E53D00C5D368 /* DrinkModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrinkModel.h; sourceTree = "<group>"; };
 		AC92D5F92280E53D00C5D368 /* DrinkModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrinkModel.m; sourceTree = "<group>"; };
+		AC92D5FB2281D9C400C5D368 /* DrinkCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrinkCell.h; sourceTree = "<group>"; };
+		AC92D5FC2281D9C400C5D368 /* DrinkCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrinkCell.m; sourceTree = "<group>"; };
+		AC92D5FD2281D9C400C5D368 /* DrinkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +100,9 @@
 				AC5991C62280C5ED00976962 /* DrinksViewModel.m */,
 				AC92D5F82280E53D00C5D368 /* DrinkModel.h */,
 				AC92D5F92280E53D00C5D368 /* DrinkModel.m */,
+				AC92D5FB2281D9C400C5D368 /* DrinkCell.h */,
+				AC92D5FC2281D9C400C5D368 /* DrinkCell.m */,
+				AC92D5FD2281D9C400C5D368 /* DrinkCell.xib */,
 			);
 			path = Drinks;
 			sourceTree = "<group>";
@@ -174,6 +182,7 @@
 			files = (
 				AC2D9DC3227B3690005F1E68 /* LaunchScreen.storyboard in Resources */,
 				AC2D9DCD227B416C005F1E68 /* Assets.xcassets in Resources */,
+				AC92D5FF2281D9C400C5D368 /* DrinkCell.xib in Resources */,
 				AC2D9DBE227B368C005F1E68 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,6 +200,7 @@
 				AC2D9DB8227B368C005F1E68 /* AppDelegate.m in Sources */,
 				AC5991C4228096E300976962 /* RequestModel.m in Sources */,
 				AC2D9DD2227B4906005F1E68 /* DrinksViewController.m in Sources */,
+				AC92D5FE2281D9C400C5D368 /* DrinkCell.m in Sources */,
 				AC5991C72280C5ED00976962 /* DrinksViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

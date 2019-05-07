@@ -10,7 +10,7 @@
 
 @implementation RequestModel
 
-- (NSDictionary *)getDataFromJson;{
+- (NSDictionary *)getDataFromJson{
     NSDictionary *nilDictionary = @{@"key1":@"nil"};
     NSData *jsonRequest = [[NSData alloc] initWithContentsOfURL:
                            [NSURL URLWithString:@"http://applicorera3jjjs.com/api/mobile/categories/14/products?page=1"]];
