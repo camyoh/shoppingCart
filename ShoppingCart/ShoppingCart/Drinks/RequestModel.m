@@ -8,12 +8,14 @@
 
 #import "RequestModel.h"
 
+//@"http://applicorera3jjjs.com/api/mobile/categories/14/products?page=1"
+
 @implementation RequestModel
 
-- (NSDictionary *)getDataFromJson{
+- (NSDictionary *)getDataFromJson:(NSString *) url{
     NSDictionary *nilDictionary = @{@"key1":@"nil"};
     NSData *jsonRequest = [[NSData alloc] initWithContentsOfURL:
-                           [NSURL URLWithString:@"http://applicorera3jjjs.com/api/mobile/categories/14/products?page=1"]];
+                           [NSURL URLWithString: url]];
     NSError *error;
     NSDictionary *allDrinksData = [NSJSONSerialization
                                    JSONObjectWithData:jsonRequest

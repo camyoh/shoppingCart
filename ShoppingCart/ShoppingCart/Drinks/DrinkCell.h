@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *drinkImage;
 @property (weak, nonatomic) IBOutlet UILabel *drinkTitle;
 @property (weak, nonatomic) IBOutlet UILabel *drinkPrice;
+@property (weak, nonatomic) IBOutlet UIButton *addDrink;
 
 @end
 
