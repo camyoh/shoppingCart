@@ -7,16 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
-@class DrinkModel;
+#import "DrinkModel.h"
+//@class DrinkModel;
 
+@class DrinksViewModel;
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DrinksViewModel : NSObject
+@protocol DrinkViewModelDelegate <NSObject>
+- (void)addDrinkToShoopingCart:(DrinkModel *)drink;
+@end
 
+@interface DrinksViewModel : NSObject
 @property (nonatomic, strong) NSMutableArray<DrinkModel *> *drinks;
+@property(nonatomic, weak)id <DrinkViewModelDelegate> delegate;
 
 - (void) createDrinks;
 - (void) requestNextPage: (NSString *) url;
+- (void) addDrinkToShoopingCart: (int) index quantity:(int) quantity;
 @end
 
 NS_ASSUME_NONNULL_END

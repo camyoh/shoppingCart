@@ -17,14 +17,33 @@
                     <view key="view" contentMode="scaleToFill" id="t2P-9r-BTG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UKi-L8-TT1">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="JNQ-VL-5Zv" id="npq-av-6yQ"/>
+                                    <outlet property="delegate" destination="JNQ-VL-5Zv" id="r5C-fZ-OrN"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="0.1019607843" green="0.73725490199999999" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="UKi-L8-TT1" firstAttribute="leading" secondItem="QtW-Zk-MPH" secondAttribute="leading" id="LiZ-5B-sx0"/>
+                            <constraint firstItem="UKi-L8-TT1" firstAttribute="bottom" secondItem="QtW-Zk-MPH" secondAttribute="bottom" id="X3G-nf-x1B"/>
+                            <constraint firstItem="UKi-L8-TT1" firstAttribute="trailing" secondItem="QtW-Zk-MPH" secondAttribute="trailing" id="YF7-Bm-4wv"/>
+                            <constraint firstItem="UKi-L8-TT1" firstAttribute="top" secondItem="QtW-Zk-MPH" secondAttribute="top" id="wYG-go-43w"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QtW-Zk-MPH"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Shopping Cart" image="cart2" id="tl3-Hz-HDG"/>
+                    <connections>
+                        <outlet property="shoppingCartTableView" destination="UKi-L8-TT1" id="hj6-Dd-99I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JN3-u5-fen" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-837" y="139"/>
+            <point key="canvasLocation" x="-837.68115942028987" y="138.61607142857142"/>
         </scene>
         <!--Drinks-->
         <scene sceneID="Vuf-Wf-Tgw">

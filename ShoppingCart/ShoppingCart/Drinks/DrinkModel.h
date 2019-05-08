@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *image;
 @property (nonatomic, strong) NSNumber *price;
+@property (nonatomic) int quantity;
 @property (nonatomic, strong) NSString *nextPage;
 @end
 

@@ -7,14 +7,18 @@
 //
 
 #import "DrinksViewModel.h"
-#import "DrinkModel.h"
+//#import "DrinkModel.h"
 #import "RequestModel.h"
+#import "ShoppingCartViewModel.h"
 
 @implementation DrinksViewModel
+@synthesize delegate; //synthesise  MyClassDelegate delegate
 
 RequestModel *requestModel;
+ShoppingCartViewModel *shoppingCartViewModel;
 
 - (void)createDrinks {
+    shoppingCartViewModel = [[ShoppingCartViewModel alloc] init];
     NSString *defaultUrl = @"http://applicorera3jjjs.com/api/mobile/categories/14/products?page=1";
     requestModel = [[RequestModel alloc] init];
     self.drinks = [NSMutableArray new];
@@ -57,6 +61,17 @@ RequestModel *requestModel;
 
         [self.drinks addObject:drink];
     }
+}
+
+- (void) addDrinkToShoopingCart: (int) index quantity:(int) quantity{
+    DrinkModel *drinkSelected = [_drinks objectAtIndex:index];
+    drinkSelected.quantity = quantity;
+    [shoppingCartViewModel addDrinkToArray:drinkSelected];
+//    shoppingCartViewModel = delegate;
+    
+//    [delegate addDrinkToShoopingCart:drinkSelected];
+    
+//    NSLog(@"index: %d, quantity: %d",index,quantity);
 }
 
 

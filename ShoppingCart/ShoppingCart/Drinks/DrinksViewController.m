@@ -9,6 +9,7 @@
 #import "DrinksViewController.h"
 #import "DrinksViewModel.h"
 #import "DrinkModel.h"
+#import "ShoppingCartViewController.h"
 
 @interface DrinksViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *drinksTableView;
@@ -21,10 +22,12 @@ int numberOfRowx = 0;
 NSMutableArray<DrinkModel *> *drinks;
 NSMutableArray<DrinkModel *> *drinksNextPage;
 DrinksViewModel *drinksViewModel;
+ShoppingCartViewController *shoppingCartViewController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     drinksViewModel = [[DrinksViewModel alloc] init];
+    shoppingCartViewController = [[ShoppingCartViewController alloc] init];
     [drinksViewModel createDrinks];
     drinks = [drinksViewModel drinks];
     numberOfRowx = (int)[drinks count];
@@ -49,7 +52,7 @@ DrinksViewModel *drinksViewModel;
         dispatch_async(dispatch_get_main_queue(), ^{
             cell.drinkImage.image = [UIImage imageWithData: data];
         });
-//        [data release];
+        //        [data release];
     });
     
     cell.addDrink.tag = indexPath.row;
@@ -80,55 +83,64 @@ DrinksViewModel *drinksViewModel;
     float reload_distance = 50;
     if(y > h + reload_distance) {
         if (![drinks[(int)[drinks count]-1].nextPage  isEqual: @"null"]){
-            [drinksViewModel requestNextPage:drinks[(int)[drinks count]-1].nextPage];
-            drinksNextPage = [drinksViewModel drinks];
-            [drinks addObjectsFromArray:drinksNextPage];
-            numberOfRowx = (int)[drinks count];
-            [self.drinksTableView reloadData];
+            [self requestNextPage];
         }
     }
 }
 
--(void) showAlert: (id)sender {
+- (void) requestNextPage {
+    [drinksViewModel requestNextPage:drinks[(int)[drinks count]-1].nextPage];
+    drinksNextPage = [drinksViewModel drinks];
+    [drinks addObjectsFromArray:drinksNextPage];
+    numberOfRowx = (int)[drinks count];
+    [self.drinksTableView reloadData];
+}
+
+- (void) showAlert: (id)sender {
     UIButton *senderButton = (UIButton *) sender;
     int drinkSelected = (int)senderButton.tag;
-    NSLog(@"Current Row = %ld", (long)senderButton.tag);
+    __block int drinkQuantity = 0;
+    
     NSString *message = @"Escoge la cantidad de ";
     NSString *drinkName = [drinks objectAtIndex:drinkSelected].name;
     NSString *complementMessage = @" que quieres agregar al carrito";
     message = [message stringByAppendingString:drinkName];
     message = [message stringByAppendingString:complementMessage];
-    NSLog(@"%@", message);
     
     UIAlertController * alert = [UIAlertController
                                  alertControllerWithTitle:@"Agregar Producto"
                                  message:message
                                  preferredStyle:UIAlertControllerStyleAlert];
     
-    //Add Buttons
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"Cantidad:";
         textField.textColor = [UIColor blueColor];
         textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         textField.borderStyle = UITextBorderStyleRoundedRect;
+        textField.keyboardType = UIKeyboardTypeNumberPad;
     }];
     
     UIAlertAction* yesButton = [UIAlertAction
-                                actionWithTitle:@"Yes"
+                                actionWithTitle:@"Agregar"
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction * action) {
-                                    //Handle your yes please button action here
-//                                    [self clearAllData];
+                                    NSArray<UITextField *> *drinkQuantityField = [alert textFields];
+                                    if ([[drinkQuantityField objectAtIndex:0].text  isEqual: @""]){
+                                        NSLog(@"null");
+                                    }
+                                    else {
+                                        drinkQuantity = [[drinkQuantityField objectAtIndex:0].text intValue];
+                                        [drinksViewModel addDrinkToShoopingCart:drinkSelected quantity:drinkQuantity];
+                                        [shoppingCartViewController reloadTableData];
+                                    }
                                 }];
     
     UIAlertAction* noButton = [UIAlertAction
-                               actionWithTitle:@"Cancel"
+                               actionWithTitle:@"Cancelar"
                                style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction * action) {
-                                   //Handle no, thanks button
+                                   //actions
                                }];
-    
-    //Add your buttons to alert controller
     
     [alert addAction:yesButton];
     [alert addAction:noButton];
