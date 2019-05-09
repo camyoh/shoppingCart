@@ -32,12 +32,15 @@ DrinksViewModel *drinksViewModel;
     NSLog(@"%@",[_drinks objectAtIndex:0].name);
     NSLog(@"%lu", (unsigned long)[_drinks count]);
     self.tabBarController.delegate = self;
+    [_drinksTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath { 
     static NSString *cellId = @"drinkCell";
     DrinkCell *cell = (DrinkCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
-    
+//    cell.addDrink.layer.cornerRadius = 10;
+//    cell.addDrink.clipsToBounds = true;
     if (cell == nil){
         NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"DrinkCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
@@ -67,6 +70,23 @@ DrinksViewModel *drinksViewModel;
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return numberOfRowx;
+}
+bool borderCell = true;
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    if (indexPath.row != 0){
+//    if (borderCell) {
+//        cell.contentView.backgroundColor = [UIColor clearColor];
+//        CGFloat cellWidth = [UIScreen mainScreen].bounds.size.width - 20;
+//        UIView *whiteRoundedCornerView = [[UIView alloc] initWithFrame:CGRectMake(10,10,cellWidth,175)];
+//        whiteRoundedCornerView.backgroundColor = [UIColor whiteColor];
+//        whiteRoundedCornerView.layer.masksToBounds = NO;
+//        whiteRoundedCornerView.layer.cornerRadius = 5.0;
+//        whiteRoundedCornerView.layer.shadowOffset = CGSizeMake(-1, 1);
+//        whiteRoundedCornerView.layer.shadowOpacity = 0.1;
+//        [cell.contentView addSubview:whiteRoundedCornerView];
+//        [cell.contentView sendSubviewToBack:whiteRoundedCornerView];
+//        borderCell = false;
+//    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)aScrollView

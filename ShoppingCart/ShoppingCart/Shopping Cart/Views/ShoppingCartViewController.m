@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _shoppingCartViewModel = [[ShoppingCartViewModel alloc]init];
+    [_shoppingCartTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -68,5 +69,6 @@
         return _shoppingCartViewModel.cartArray.count;
     }
 }
+
 
 @end

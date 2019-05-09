@@ -12,33 +12,51 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="emptyCell" id="KGk-i7-Jjw" customClass="EmptyCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="emptyCell" rowHeight="409" id="KGk-i7-Jjw" customClass="EmptyCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="409"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="408.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agrega productos para verlos aquí" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHB-Z0-xJM">
-                        <rect key="frame" x="28.5" y="11.5" width="263" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Cart is Empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHB-Z0-xJM">
+                        <rect key="frame" x="70" y="272" width="180" height="28.5"/>
+                        <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
+                        <color key="textColor" red="0.89548343420028687" green="0.27685743570327759" blue="0.22039452195167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyShoppingCart" translatesAutoresizingMaskIntoConstraints="NO" id="aAJ-tM-JhT">
+                        <rect key="frame" x="40" y="16" width="240" height="240"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="263" id="6cj-TF-Dj8"/>
-                            <constraint firstAttribute="height" constant="21" id="tky-Ic-wer"/>
+                            <constraint firstAttribute="height" constant="240" id="M2q-Ya-PR9"/>
+                            <constraint firstAttribute="width" constant="240" id="yWs-FS-rbZ"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Looks like you haven't added anything to your cart yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sL2-18-csF">
+                        <rect key="frame" x="43.5" y="308.5" width="233" height="48.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="233" id="lNC-AS-WBv"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="17"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="bHB-Z0-xJM" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="lPd-np-mCx"/>
-                    <constraint firstItem="bHB-Z0-xJM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="wIH-dz-MA7"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="sL2-18-csF" secondAttribute="bottom" constant="16" id="2nW-bI-4Tc"/>
+                    <constraint firstItem="sL2-18-csF" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="NFU-M1-ofT"/>
+                    <constraint firstItem="bHB-Z0-xJM" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="QpF-WY-bdJ"/>
+                    <constraint firstItem="bHB-Z0-xJM" firstAttribute="top" secondItem="aAJ-tM-JhT" secondAttribute="bottom" constant="16" id="YuI-bB-91P"/>
+                    <constraint firstItem="aAJ-tM-JhT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="e1A-NV-Vux"/>
+                    <constraint firstItem="aAJ-tM-JhT" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="fq6-Ak-xdi"/>
+                    <constraint firstItem="sL2-18-csF" firstAttribute="top" secondItem="bHB-Z0-xJM" secondAttribute="bottom" constant="8" id="qEb-L6-hOb"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
-            <connections>
-                <outlet property="emptyLabel" destination="bHB-Z0-xJM" id="JAa-YQ-eDa"/>
-            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="207.92410714285714"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="emptyShoppingCart" width="316" height="354"/>
+    </resources>
 </document>
