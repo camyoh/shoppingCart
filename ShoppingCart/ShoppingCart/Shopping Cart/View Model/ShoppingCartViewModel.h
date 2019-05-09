@@ -12,8 +12,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ShoppingCartViewModel : NSObject <DrinkViewModelDelegate>
-@property (nonatomic, strong) NSMutableArray<DrinkModel *> *drinks;
+@interface ShoppingCartViewModel : NSObject 
+@property (nonatomic, strong) NSMutableArray<DrinkModel *> *cartArray;
 - (void)addDrinkToArray:(DrinkModel *)drink;
 @end
 

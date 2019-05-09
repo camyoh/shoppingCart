@@ -10,27 +10,26 @@
 //#import "DrinksViewModel.h"
 
 @implementation ShoppingCartViewModel
-DrinksViewModel *drinkViewModel;
+//DrinksViewModel *drinkViewModel;
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        drinkViewModel = [[DrinksViewModel alloc] init];
-        drinkViewModel.delegate = self;
-        self.drinks = [NSMutableArray new];
-//        NSLog(@"shooping instanciado");
+//        drinkViewModel = [[DrinksViewModel alloc] init];
+//        drinkViewModel.delegate = self;
+//        self.drinks = [NSMutableArray new];
     }
     return self;
 }
 
 - (void)addDrinkToArray:(DrinkModel *)drink{
-    [self.drinks addObject:drink];
+//    [self.cartArray addObject:drink];
     NSLog(@"Drink added");
 }
 
-- (void)addDrinkToShoopingCart:(nonnull DrinkModel *)drink {
-    NSLog(@"llamando protocolo");
-}
+//    [self.drinks addObject:drink];
+//    NSLog(@"llamando protocolo");
+//}
 
 @end

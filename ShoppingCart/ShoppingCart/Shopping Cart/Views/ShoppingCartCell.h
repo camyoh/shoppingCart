@@ -11,6 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ShoppingCartCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *drinkImage;
+@property (weak, nonatomic) IBOutlet UILabel *drinkQuantity;
+@property (weak, nonatomic) IBOutlet UILabel *drinkPrice;
+@property (weak, nonatomic) IBOutlet UILabel *drinkTitle;
 
 @end
 

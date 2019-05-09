@@ -8,10 +8,10 @@
 
 #import "DrinksViewController.h"
 #import "DrinksViewModel.h"
-#import "DrinkModel.h"
+
 #import "ShoppingCartViewController.h"
 
-@interface DrinksViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface DrinksViewController () <UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *drinksTableView;
 
 @end
@@ -19,20 +19,19 @@
 @implementation DrinksViewController
 
 int numberOfRowx = 0;
-NSMutableArray<DrinkModel *> *drinks;
+
 NSMutableArray<DrinkModel *> *drinksNextPage;
 DrinksViewModel *drinksViewModel;
-ShoppingCartViewController *shoppingCartViewController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     drinksViewModel = [[DrinksViewModel alloc] init];
-    shoppingCartViewController = [[ShoppingCartViewController alloc] init];
     [drinksViewModel createDrinks];
-    drinks = [drinksViewModel drinks];
-    numberOfRowx = (int)[drinks count];
-    NSLog(@"%@",[drinks objectAtIndex:0].name);
-    NSLog(@"%lu", (unsigned long)[drinks count]);
+    _drinks = [drinksViewModel drinks];
+    numberOfRowx = (int)[_drinks count];
+    NSLog(@"%@",[_drinks objectAtIndex:0].name);
+    NSLog(@"%lu", (unsigned long)[_drinks count]);
+    self.tabBarController.delegate = self;
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath { 
@@ -45,7 +44,7 @@ ShoppingCartViewController *shoppingCartViewController;
     }
     
     dispatch_async(dispatch_get_global_queue(0,0), ^{
-        NSString *imageUrl = [drinks objectAtIndex:indexPath.row].image;
+        NSString *imageUrl = [self->_drinks objectAtIndex:indexPath.row].image;
         NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imageUrl]];
         if ( data == nil )
             return;
@@ -60,9 +59,9 @@ ShoppingCartViewController *shoppingCartViewController;
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.drinkTitle.text = [drinks objectAtIndex:indexPath.row].name;
+    cell.drinkTitle.text = [_drinks objectAtIndex:indexPath.row].name;
     NSString *drinkPrice = @"$ ";
-    cell.drinkPrice.text = [drinkPrice stringByAppendingString: [[drinks objectAtIndex:indexPath.row].price stringValue]] ;
+    cell.drinkPrice.text = [drinkPrice stringByAppendingString: [[_drinks objectAtIndex:indexPath.row].price stringValue]] ;
     return cell;
 }
 
@@ -82,17 +81,18 @@ ShoppingCartViewController *shoppingCartViewController;
     
     float reload_distance = 50;
     if(y > h + reload_distance) {
-        if (![drinks[(int)[drinks count]-1].nextPage  isEqual: @"null"]){
+        if (![_drinks[(int)[_drinks count]-1].nextPage  isEqual: @"null"]){
             [self requestNextPage];
         }
     }
 }
 
 - (void) requestNextPage {
-    [drinksViewModel requestNextPage:drinks[(int)[drinks count]-1].nextPage];
+    [drinksViewModel requestNextPage:_drinks[(int)[_drinks count]-1].nextPage];
     drinksNextPage = [drinksViewModel drinks];
-    [drinks addObjectsFromArray:drinksNextPage];
-    numberOfRowx = (int)[drinks count];
+    [_drinks addObjectsFromArray:drinksNextPage];
+    numberOfRowx = (int)[_drinks count];
+    drinksViewModel.drinks = _drinks;
     [self.drinksTableView reloadData];
 }
 
@@ -102,7 +102,7 @@ ShoppingCartViewController *shoppingCartViewController;
     __block int drinkQuantity = 0;
     
     NSString *message = @"Escoge la cantidad de ";
-    NSString *drinkName = [drinks objectAtIndex:drinkSelected].name;
+    NSString *drinkName = [_drinks objectAtIndex:drinkSelected].name;
     NSString *complementMessage = @" que quieres agregar al carrito";
     message = [message stringByAppendingString:drinkName];
     message = [message stringByAppendingString:complementMessage];
@@ -125,13 +125,12 @@ ShoppingCartViewController *shoppingCartViewController;
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction * action) {
                                     NSArray<UITextField *> *drinkQuantityField = [alert textFields];
-                                    if ([[drinkQuantityField objectAtIndex:0].text  isEqual: @""]){
+                                    if ([[drinkQuantityField objectAtIndex:0].text  isEqual: @""] || [[drinkQuantityField objectAtIndex:0].text  isEqual: @"0"]){
                                         NSLog(@"null");
                                     }
                                     else {
                                         drinkQuantity = [[drinkQuantityField objectAtIndex:0].text intValue];
                                         [drinksViewModel addDrinkToShoopingCart:drinkSelected quantity:drinkQuantity];
-                                        [shoppingCartViewController reloadTableData];
                                     }
                                 }];
     
@@ -146,6 +145,14 @@ ShoppingCartViewController *shoppingCartViewController;
     [alert addAction:noButton];
     
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    if ([viewController isKindOfClass:ShoppingCartViewController.class]){
+        ShoppingCartViewController *shoppingCartViewController = (ShoppingCartViewController *)viewController;
+        shoppingCartViewController.shoppingCartViewModel.cartArray = drinksViewModel.cartArray;
+        NSLog(@"%@", drinksViewModel.cartArray);
+    }
 }
 
 @end

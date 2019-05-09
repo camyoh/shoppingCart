@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "DrinkCell.h"
+#import "DrinkModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DrinksViewController : UIViewController
-
+@property  (nonatomic, strong)NSMutableArray<DrinkModel *> *drinks;
 @end
 
 NS_ASSUME_NONNULL_END

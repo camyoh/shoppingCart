@@ -11,11 +11,25 @@
 #import "RequestModel.h"
 #import "ShoppingCartViewModel.h"
 
-@implementation DrinksViewModel
-@synthesize delegate; //synthesise  MyClassDelegate delegate
+@interface DrinksViewModel ()
 
+@end
+
+@implementation DrinksViewModel
+//@synthesize delegate; //synthesise  MyClassDelegate delegate
+
+//hombre
 RequestModel *requestModel;
 ShoppingCartViewModel *shoppingCartViewModel;
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _cartArray = [NSMutableArray new];
+    }
+    return self;
+}
 
 - (void)createDrinks {
     shoppingCartViewModel = [[ShoppingCartViewModel alloc] init];
@@ -66,12 +80,8 @@ ShoppingCartViewModel *shoppingCartViewModel;
 - (void) addDrinkToShoopingCart: (int) index quantity:(int) quantity{
     DrinkModel *drinkSelected = [_drinks objectAtIndex:index];
     drinkSelected.quantity = quantity;
-    [shoppingCartViewModel addDrinkToArray:drinkSelected];
-//    shoppingCartViewModel = delegate;
-    
-//    [delegate addDrinkToShoopingCart:drinkSelected];
-    
-//    NSLog(@"index: %d, quantity: %d",index,quantity);
+    [self.cartArray addObject:drinkSelected];
+    NSLog(@"bebida agregada");
 }
 
 
