@@ -42,9 +42,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgf-6V-v09">
-                        <rect key="frame" x="51.5" y="365" width="217" height="37"/>
+                        <rect key="frame" x="40" y="365" width="240" height="37"/>
                         <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
-                        <state key="normal" title="Tap here add some Drinks!">
+                        <state key="normal" title="Tap here to add some Drinks!">
                             <color key="titleColor" red="0.82359236478805542" green="0.32665091753005981" blue="0.25485467910766602" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </state>
                     </button>

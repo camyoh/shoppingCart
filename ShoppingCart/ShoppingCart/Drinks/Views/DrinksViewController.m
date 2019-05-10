@@ -13,71 +13,31 @@
 
 @interface DrinksViewController () <UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *drinksTableView;
-
+@property (weak, nonatomic) IBOutlet NSMutableArray<DrinkModel *> *drinksNextPage;
+@property (nonatomic) int numberOfRowx;
 @end
 
 @implementation DrinksViewController
 
-int numberOfRowx = 0;
 
-NSMutableArray<DrinkModel *> *drinksNextPage;
+
+
 DrinksViewModel *drinksViewModel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     drinksViewModel = [[DrinksViewModel alloc] init];
     [drinksViewModel createDrinks];
-    
+    [drinksViewModel loadDrinksFromUserDefaults];
 //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"drinksDictionary"];
 //    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    [drinksViewModel loadDrinksFromUserDefaults];
-    _drinks = [drinksViewModel drinks];
-    numberOfRowx = (int)[_drinks count];
+    self.drinks = [drinksViewModel drinks];
+    self.numberOfRowx = (int)[self.drinks count];
     self.tabBarController.delegate = self;
-    [_drinksTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.drinksTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath { 
-    static NSString *cellId = @"drinkCell";
-    DrinkCell *cell = (DrinkCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
-    if (cell == nil){
-        NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"DrinkCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-    }
-    
-    dispatch_async(dispatch_get_global_queue(0,0), ^{
-        NSString *imageUrl = [self->_drinks objectAtIndex:indexPath.row].image;
-        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imageUrl]];
-        if ( data == nil )
-            return;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            cell.drinkImage.image = [UIImage imageWithData: data];
-        });
-    });
-    
-    cell.addDrink.layer.cornerRadius = 20;
-    cell.addDrink.translatesAutoresizingMaskIntoConstraints = false;
-    
-//    cell.contentView.layer.borderWidth = 1;
-//    cell.contentView.layer.borderColor = [UIColor grayColor].CGColor;
-//    cell.contentView.layer.cornerRadius = 10;
-    
-    cell.addDrink.tag = indexPath.row;
-    [cell.addDrink addTarget:self action:@selector(showAlert:) forControlEvents:UIControlEventTouchUpInside];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    cell.drinkTitle.text = [_drinks objectAtIndex:indexPath.row].name;
-    NSString *drinkPrice = @"$ ";
-    cell.drinkPrice.text = [drinkPrice stringByAppendingString: [[_drinks objectAtIndex:indexPath.row].price stringValue]] ;
-    return cell;
-}
-
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return numberOfRowx;
-}
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)aScrollView
                   willDecelerate:(BOOL)decelerate
@@ -91,18 +51,18 @@ DrinksViewModel *drinksViewModel;
     
     float reload_distance = 50;
     if(y > h + reload_distance) {
-        if (![_drinks[(int)[_drinks count]-1].nextPage  isEqual: @"null"]){
+        if (![self.drinks[(int)[self.drinks count]-1].nextPage  isEqual: @"null"]){
             [self requestNextPage];
         }
     }
 }
 
 - (void) requestNextPage {
-    [drinksViewModel requestNextPage:_drinks[(int)[_drinks count]-1].nextPage];
-    drinksNextPage = [drinksViewModel drinks];
-    [_drinks addObjectsFromArray:drinksNextPage];
-    numberOfRowx = (int)[_drinks count];
-    drinksViewModel.drinks = _drinks;
+    [drinksViewModel requestNextPage:self.drinks[(int)[self.drinks count]-1].nextPage];
+    self.drinksNextPage = [drinksViewModel drinks];
+    [self.drinks addObjectsFromArray: self.drinksNextPage];
+    self.numberOfRowx = (int)[self.drinks count];
+    drinksViewModel.drinks = self.drinks;
     [self.drinksTableView reloadData];
 }
 
@@ -112,7 +72,7 @@ DrinksViewModel *drinksViewModel;
     __block int drinkQuantity = 0;
     
     NSString *message = @"Escoge la cantidad de ";
-    NSString *drinkName = [_drinks objectAtIndex:drinkSelected].name;
+    NSString *drinkName = [self.drinks objectAtIndex:drinkSelected].name;
     NSString *complementMessage = @" que quieres agregar al carrito";
     message = [message stringByAppendingString:drinkName];
     message = [message stringByAppendingString:complementMessage];
@@ -155,6 +115,15 @@ DrinksViewModel *drinksViewModel;
     [alert addAction:noButton];
     
     [self presentViewController:alert animated:YES completion:nil];
+
+}
+
+- (void) successAlert{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"My Alert"
+                                                                   message:@"This is an alert."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
@@ -162,6 +131,48 @@ DrinksViewModel *drinksViewModel;
         ShoppingCartViewController *shoppingCartViewController = (ShoppingCartViewController *)viewController;
         shoppingCartViewController.shoppingCartViewModel.cartArray = drinksViewModel.cartArray;
     }
+}
+
+#pragma mark -
+#pragma mark Table View
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    static NSString *cellId = @"drinkCell";
+    DrinkCell *cell = (DrinkCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil){
+        NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"DrinkCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    
+    dispatch_async(dispatch_get_global_queue(0,0), ^{
+        NSString *imageUrl = [self.drinks objectAtIndex:indexPath.row].image;
+        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imageUrl]];
+        if ( data == nil )
+            return;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.drinkImage.image = [UIImage imageWithData: data];
+        });
+    });
+    
+    cell.addDrink.layer.cornerRadius = 20;
+    cell.addDrink.translatesAutoresizingMaskIntoConstraints = false;
+    
+    //    cell.contentView.layer.borderWidth = 1;
+    //    cell.contentView.layer.borderColor = [UIColor grayColor].CGColor;
+    //    cell.contentView.layer.cornerRadius = 10;
+    
+    cell.addDrink.tag = indexPath.row;
+    [cell.addDrink addTarget:self action:@selector(showAlert:) forControlEvents:UIControlEventTouchUpInside];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    cell.drinkTitle.text = [self.drinks objectAtIndex:indexPath.row].name;
+    NSString *drinkPrice = @"$ ";
+    cell.drinkPrice.text = [drinkPrice stringByAppendingString: [[self.drinks objectAtIndex:indexPath.row].price stringValue]] ;
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.numberOfRowx;
 }
 
 @end
