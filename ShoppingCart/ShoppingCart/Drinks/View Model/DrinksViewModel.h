@@ -20,11 +20,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DrinksViewModel : NSObject
 @property (nonatomic, strong) NSMutableArray<DrinkModel *> *cartArray;
 @property (nonatomic, strong) NSMutableArray<DrinkModel *> *drinks;
-//@property(nonatomic, weak)id <DrinkViewModelDelegate> delegate;
 
 - (void) createDrinks;
 - (void) requestNextPage: (NSString *) url;
-- (void) addDrinkToShoopingCart: (int) index quantity:(int) quantity;
+- (void) addDrinkToShoopingCart: (int) index quantity:(NSNumber *) quantity;
+- (void) saveDrinkToUserDefaults: (int) drinkIndex quantity:(int) quantity;
+- (void) loadDrinkFromUserDefaults;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface EmptyCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIButton *addDrinksButton;
 
 @end
 

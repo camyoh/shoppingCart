@@ -12,13 +12,11 @@
 #import "ShoppingCartViewModel.h"
 
 @interface DrinksViewModel ()
+@property (nonatomic, strong) NSMutableArray *drinksDictionary;
 
 @end
-
 @implementation DrinksViewModel
-//@synthesize delegate; //synthesise  MyClassDelegate delegate
 
-//hombre
 RequestModel *requestModel;
 ShoppingCartViewModel *shoppingCartViewModel;
 
@@ -26,7 +24,8 @@ ShoppingCartViewModel *shoppingCartViewModel;
 {
     self = [super init];
     if (self) {
-        _cartArray = [NSMutableArray new];
+        self.cartArray = [NSMutableArray new];
+        self.drinksDictionary = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -52,7 +51,6 @@ ShoppingCartViewModel *shoppingCartViewModel;
         }
         [self.drinks addObject:drink];
     }
-//    NSLog(@"total bebidas: %lu",(unsigned long)totalDrinks);
 }
 
 -(void)requestNextPage:(NSString *)url {
@@ -72,17 +70,84 @@ ShoppingCartViewModel *shoppingCartViewModel;
         else {
             drink.nextPage = drinksData[@"next_page_url"];
         }
-
+        
         [self.drinks addObject:drink];
     }
 }
 
-- (void) addDrinkToShoopingCart: (int) index quantity:(int) quantity{
-    DrinkModel *drinkSelected = [_drinks objectAtIndex:index];
+- (void) addDrinkToShoopingCart: (int) index quantity:(NSNumber *) quantity{
+    DrinkModel *drinkSelected = [[self.drinks objectAtIndex:index] copy];
     drinkSelected.quantity = quantity;
-    [self.cartArray addObject:drinkSelected];
-    NSLog(@"bebida agregada");
+    NSUInteger totalDrinks = [self.cartArray count];
+    
+    NSMutableDictionary *drinkDictionary = [[NSMutableDictionary alloc] init];
+    [drinkDictionary setObject: drinkSelected.name  forKey: @"name"];
+//    [drinkDictionary setObject: drinkSelected.quantity forKey:  @"quantity"];
+    [drinkDictionary setObject: drinkSelected.price forKey:  @"price"];
+    [drinkDictionary setObject: drinkSelected.image forKey: @"urlImage"];
+    
+    BOOL newDrink = YES;
+    NSLog(@"bebida ya extiste");
+    for (int i = 0; i < totalDrinks; i++){
+        if ([[self.drinks objectAtIndex:index].name isEqualToString: [self.cartArray objectAtIndex:i].name]) {
+            int newQuantity = [[self.cartArray objectAtIndex:i].quantity intValue] + [quantity intValue];
+            [self.cartArray objectAtIndex:i].quantity = @(newQuantity);
+//            [drinkDictionary setObject: drinkSelected.quantity forKey:  @"quantity"];
+            [[self.drinksDictionary objectAtIndex: i] removeObjectForKey:@"quantity"];
+            [[self.drinksDictionary objectAtIndex: i] setObject: @(newQuantity) forKey:@"quantity"];
+            
+//            [drinkDictionary setObject: @(newQuantity) forKey:  @"quantity"];
+//            [self.drinksDictionary replaceObjectAtIndex: i withObject:drinkDictionary];
+            NSLog(@"bebida ya extiste");
+            newDrink = NO;
+        }
+    }
+    if (newDrink){
+        [self.cartArray addObject:drinkSelected];
+        [drinkDictionary setObject: drinkSelected.quantity forKey:  @"quantity"];
+        [self.drinksDictionary addObject: drinkDictionary];
+    }
+    NSLog(@"%@", self.drinksDictionary);
+    
+    
+    
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject: self.drinksDictionary forKey:@"drinksDictionary"];
+//    [userDefaults setObject:self.indexOfDrinksInUserDefaults forKey:@"indexOfDrinks"];
+//    [userDefaults setObject:self.quantityOfDrinksInUserDefaults forKey:@"quantityOfDrinks"];
+    [userDefaults synchronize];
 }
 
+#pragma mark -
+#pragma mark userDefaults
+- (void)saveDrinkToUserDefaults:(int)drinkIndex quantity:(int)quantity {
+    
+}
+
+- (void)loadDrinkFromUserDefaults{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    self.drinksDictionary = [userDefaults objectForKey:@"drinksDictionary"];
+    NSLog(@"%lu", (unsigned long)[self.drinksDictionary count]);
+    for (int i = 0; i < [self.drinksDictionary count]; i++){
+        DrinkModel *drink = [[DrinkModel alloc]init];
+        drink.name = [[self.drinksDictionary objectAtIndex:i] objectForKey:@"name"];
+        drink.price = [[self.drinksDictionary objectAtIndex:i] objectForKey:@"price"];
+        drink.image = [[self.drinksDictionary objectAtIndex:i] objectForKey:@"urlImage"];
+        drink.quantity = [[self.drinksDictionary objectAtIndex:i] objectForKey:@"quantity"];
+        [self.cartArray addObject:drink];
+    }
+    
+    
+//    NSUInteger totalDrinks = [self.indexOfDrinksInUserDefaults count];
+//    for (int i = 0; i < totalDrinks; i++){
+//        int position = [[self.indexOfDrinksInUserDefaults objectAtIndex: (NSInteger) i] intValue];
+//        int quantity =[[self.quantityOfDrinksInUserDefaults objectAtIndex: (NSInteger) i] intValue];
+//
+//        DrinkModel *drink = [self.drinks objectAtIndex: (NSInteger)position];
+//        drink.quantity = @(quantity);
+//        [self.cartArray addObject:drink];
+//    }
+}
 
 @end

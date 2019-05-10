@@ -33,6 +33,8 @@
             NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"EmptyCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
         }
+        [cell.addDrinksButton addTarget:self action:@selector(changeView) forControlEvents:UIControlEventTouchUpInside];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
         static NSString *cellId = @"shoppingCartCell";
@@ -54,10 +56,11 @@
         });
         
         cell.drinkTitle.text = [_shoppingCartViewModel.cartArray objectAtIndex:indexPath.row].name;
-        NSString *quantity = [@("x ") stringByAppendingString: [@([_shoppingCartViewModel.cartArray objectAtIndex:indexPath.row].quantity) stringValue] ];
+        NSString *quantity = [@("x ") stringByAppendingString: [[_shoppingCartViewModel.cartArray objectAtIndex:indexPath.row].quantity stringValue] ] ;
         cell.drinkQuantity.text = quantity;
-        int finalPrice = [[_shoppingCartViewModel.cartArray objectAtIndex:indexPath.row].price intValue]*[_shoppingCartViewModel.cartArray objectAtIndex:indexPath.row].quantity;
+        int finalPrice = [[_shoppingCartViewModel.cartArray objectAtIndex:indexPath.row].price intValue]*[[_shoppingCartViewModel.cartArray objectAtIndex:indexPath.row].quantity intValue];
         cell.drinkPrice.text = [@("$ ") stringByAppendingString:[@(finalPrice) stringValue]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
 }
@@ -70,5 +73,9 @@
     }
 }
 
+- (void)changeView{
+    [self.tabBarController setSelectedIndex:0];
+    NSLog(@"button pressed");
+}
 
 @end

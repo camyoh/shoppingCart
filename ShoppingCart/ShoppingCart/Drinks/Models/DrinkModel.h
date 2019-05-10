@@ -10,12 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DrinkModel : NSObject
+@interface DrinkModel : NSObject <NSCopying>
+
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *image;
 @property (nonatomic, strong) NSNumber *price;
-@property (nonatomic) int quantity;
+@property (nonatomic, strong) NSNumber *quantity;
 @property (nonatomic, strong) NSString *nextPage;
+- (nonnull id)copyWithZone:(nullable NSZone *)zone;
 
 @end
 
