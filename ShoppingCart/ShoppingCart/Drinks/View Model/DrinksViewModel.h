@@ -8,14 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "DrinkModel.h"
-//@class DrinkModel;
 
 @class DrinksViewModel;
 NS_ASSUME_NONNULL_BEGIN
-
-//@protocol DrinkViewModelDelegate <NSObject>
-//- (void)addDrinkToShoopingCart:(DrinkModel *)drink;
-//@end
 
 @interface DrinksViewModel : NSObject
 @property (nonatomic, strong) NSMutableArray<DrinkModel *> *cartArray;
@@ -24,8 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) createDrinks;
 - (void) requestNextPage: (NSString *) url;
 - (void) addDrinkToShoopingCart: (int) index quantity:(NSNumber *) quantity;
-- (void) saveDrinkToUserDefaults: (int) drinkIndex quantity:(int) quantity;
-- (void) loadDrinkFromUserDefaults;
+
+- (void) loadDrinksFromUserDefaults;
 @end
 
 NS_ASSUME_NONNULL_END

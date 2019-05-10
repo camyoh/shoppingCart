@@ -28,15 +28,16 @@ DrinksViewModel *drinksViewModel;
     drinksViewModel = [[DrinksViewModel alloc] init];
     [drinksViewModel createDrinks];
     
-    [drinksViewModel loadDrinkFromUserDefaults];
+//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"drinksDictionary"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [drinksViewModel loadDrinksFromUserDefaults];
     _drinks = [drinksViewModel drinks];
     numberOfRowx = (int)[_drinks count];
-    NSLog(@"%@",[_drinks objectAtIndex:0].name);
-    NSLog(@"%lu", (unsigned long)[_drinks count]);
     self.tabBarController.delegate = self;
     [_drinksTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
 }
+
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath { 
     static NSString *cellId = @"drinkCell";
@@ -55,6 +56,13 @@ DrinksViewModel *drinksViewModel;
             cell.drinkImage.image = [UIImage imageWithData: data];
         });
     });
+    
+    cell.addDrink.layer.cornerRadius = 20;
+    cell.addDrink.translatesAutoresizingMaskIntoConstraints = false;
+    
+//    cell.contentView.layer.borderWidth = 1;
+//    cell.contentView.layer.borderColor = [UIColor grayColor].CGColor;
+//    cell.contentView.layer.cornerRadius = 10;
     
     cell.addDrink.tag = indexPath.row;
     [cell.addDrink addTarget:self action:@selector(showAlert:) forControlEvents:UIControlEventTouchUpInside];
@@ -133,7 +141,6 @@ DrinksViewModel *drinksViewModel;
                                     else {
                                         drinkQuantity = [[drinkQuantityField objectAtIndex:0].text intValue];
                                         [drinksViewModel addDrinkToShoopingCart:drinkSelected quantity: @(drinkQuantity)];
-                                        [drinksViewModel saveDrinkToUserDefaults:(int)senderButton.tag quantity:drinkQuantity];
                                     }
                                 }];
     
@@ -154,7 +161,6 @@ DrinksViewModel *drinksViewModel;
     if ([viewController isKindOfClass:ShoppingCartViewController.class]){
         ShoppingCartViewController *shoppingCartViewController = (ShoppingCartViewController *)viewController;
         shoppingCartViewController.shoppingCartViewModel.cartArray = drinksViewModel.cartArray;
-        NSLog(@"%@", drinksViewModel.cartArray);
     }
 }
 

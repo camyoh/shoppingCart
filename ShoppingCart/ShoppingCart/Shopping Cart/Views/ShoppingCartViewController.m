@@ -75,7 +75,6 @@
 
 - (void)changeView{
     [self.tabBarController setSelectedIndex:0];
-    NSLog(@"button pressed");
 }
 
 @end
