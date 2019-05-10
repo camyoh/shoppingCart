@@ -27,10 +27,6 @@ DrinksViewModel *drinksViewModel;
     [super viewDidLoad];
     drinksViewModel = [[DrinksViewModel alloc] init];
     [drinksViewModel createDrinks];
-
-//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"indexOfDrinks"];
-//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"quantityOfDrinks"];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [drinksViewModel loadDrinkFromUserDefaults];
     _drinks = [drinksViewModel drinks];
